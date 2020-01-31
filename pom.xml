@@ -34,6 +34,7 @@
             <artifactId>BlockmatrixWithTimestamping</artifactId>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/BlockmatrixWithTimestamping-0.0.1-lib.jar</systemPath>
+            <version>0.0.1</version>
         </dependency>
     </dependencies>
     
