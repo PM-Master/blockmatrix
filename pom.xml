@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>gov.nist.csd.pm</groupId>
+    <artifactId>blockmatrix</artifactId>
+    <version>0.0.1</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.PM-Master</groupId>
+            <artifactId>policy-machine-core</artifactId>
+            <version>cb82edd8a83451b4d771e696f6ca10ddf5689708</version>
+        </dependency>
+        <dependency>
+            <groupId>gov.nist.blockmatrixwithtimestamping</groupId>
+            <artifactId>BlockmatrixWithTimestamping</artifactId>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/BlockmatrixWithTimestamping-0.0.1-lib.jar</systemPath>
+        </dependency>
+    </dependencies>
+    
+</project>
