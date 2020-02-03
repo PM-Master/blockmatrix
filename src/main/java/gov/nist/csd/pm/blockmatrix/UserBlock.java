@@ -20,6 +20,9 @@ public class UserBlock implements Serializable {
         try {
             in = new ObjectInputStream(bis);
             Object o = in.readObject();
+            UserBlock ub = (UserBlock)o;
+            this.setUsername(ub.getUsername());
+            this.setAttributes(ub.getAttributes());
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
             throw new PMException("error extracting user from data: " + e.getMessage());

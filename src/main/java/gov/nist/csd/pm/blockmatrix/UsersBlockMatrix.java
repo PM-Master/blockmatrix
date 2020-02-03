@@ -16,13 +16,13 @@ public class UsersBlockMatrix {
         usersMap = new HashMap<>();
     }
 
-    public synchronized void addUser(String user, Collection<String> attributes) throws PMException {
+    public synchronized void addUser(String user, String ... attributes) throws PMException {
         if (usersMap.containsKey(user)) {
             throw new PMException("user " + user + " already exists");
         }
 
         try {
-            int index = bm.add(new UserBlock(user, attributes).toByteArray());
+            int index = bm.add(new UserBlock(user, Arrays.asList(attributes)).toByteArray());
             usersMap.put(user, index);
         } catch (IOException e) {
             throw new PMException("error adding user: " + e.getMessage());
@@ -40,16 +40,17 @@ public class UsersBlockMatrix {
         if (index < 0) {
             throw new PMException("user " + user + " does not exist");
         }
-        return new UserBlock(bm.getData(index));
+        byte[] data = bm.getData(index);
+        return new UserBlock(data);
     }
 
-    public synchronized void addAttributes(String user, String ... attributes) throws PMException {
+    public synchronized void updateUser(String user, String ... attributes) throws PMException {
         int index = usersMap.get(user);
         if (index < 0) {
-            addUser(user, Arrays.asList(attributes));
+            addUser(user, attributes);
         } else {
             removeUser(user);
-            addUser(user, Arrays.asList(attributes));
+            addUser(user, attributes);
         }
     }
 }
