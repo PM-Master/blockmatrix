@@ -17,7 +17,7 @@ public class UsersBlockMatrix {
 
     public synchronized void addUser(String user, String ... attributes) throws BlockMatrixException {
         if (usersMap.containsKey(user)) {
-            throw new BlockMatrixException("user " + user + " already exists");
+            updateUser(user, attributes);
         }
 
         try {
