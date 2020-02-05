@@ -1,7 +1,6 @@
 package gov.nist.csd.pm.blockmatrix;
 
 import gov.nist.blockmatrixtimestamped.BlockTensor;
-import gov.nist.csd.pm.exceptions.PMException;
 
 import java.io.IOException;
 import java.util.*;
@@ -16,16 +15,16 @@ public class UsersBlockMatrix {
         usersMap = new HashMap<>();
     }
 
-    public synchronized void addUser(String user, String ... attributes) throws PMException {
+    public synchronized void addUser(String user, String ... attributes) throws BlockMatrixException {
         if (usersMap.containsKey(user)) {
-            throw new PMException("user " + user + " already exists");
+            throw new BlockMatrixException("user " + user + " already exists");
         }
 
         try {
             int index = bm.add(new UserBlock(user, Arrays.asList(attributes)).toByteArray());
             usersMap.put(user, index);
         } catch (IOException e) {
-            throw new PMException("error adding user: " + e.getMessage());
+            throw new BlockMatrixException("error adding user: " + e.getMessage());
         }
     }
 
@@ -35,16 +34,16 @@ public class UsersBlockMatrix {
         usersMap.remove(user);
     }
 
-    public synchronized UserBlock getUser(String user) throws PMException {
+    public synchronized UserBlock getUser(String user) throws BlockMatrixException {
         int index = usersMap.get(user);
         if (index < 0) {
-            throw new PMException("user " + user + " does not exist");
+            throw new BlockMatrixException("user " + user + " does not exist");
         }
         byte[] data = bm.getData(index);
         return new UserBlock(data);
     }
 
-    public synchronized void updateUser(String user, String ... attributes) throws PMException {
+    public synchronized void updateUser(String user, String ... attributes) throws BlockMatrixException {
         int index = usersMap.get(user);
         if (index < 0) {
             addUser(user, attributes);

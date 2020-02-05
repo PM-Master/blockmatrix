@@ -29,11 +29,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.PM-Master</groupId>
-            <artifactId>policy-machine-core</artifactId>
-            <version>cb82edd8a83451b4d771e696f6ca10ddf5689708</version>
-        </dependency>
-        <dependency>
             <groupId>gov.nist.blockmatrixwithtimestamping</groupId>
             <artifactId>BlockmatrixWithTimestamping</artifactId>
             <scope>system</scope>

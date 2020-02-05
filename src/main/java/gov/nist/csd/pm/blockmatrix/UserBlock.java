@@ -1,7 +1,5 @@
 package gov.nist.csd.pm.blockmatrix;
 
-import gov.nist.csd.pm.exceptions.PMException;
-
 import java.io.*;
 import java.util.Collection;
 
@@ -14,7 +12,7 @@ public class UserBlock implements Serializable {
         this.attributes = attributes;
     }
 
-    public UserBlock(byte[] userData) throws PMException {
+    public UserBlock(byte[] userData) throws BlockMatrixException {
         ByteArrayInputStream bis = new ByteArrayInputStream(userData);
         ObjectInput in = null;
         try {
@@ -25,7 +23,7 @@ public class UserBlock implements Serializable {
             this.setAttributes(ub.getAttributes());
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-            throw new PMException("error extracting user from data: " + e.getMessage());
+            throw new BlockMatrixException("error extracting user from data: " + e.getMessage());
         } finally {
             try {
                 if (in != null) {
