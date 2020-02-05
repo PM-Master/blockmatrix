@@ -1,5 +1,8 @@
 package gov.nist.csd.pm.blockmatrix;
 
+import gov.nist.csd.pm.usersblockmatrix.BlockMatrixException;
+import gov.nist.csd.pm.usersblockmatrix.UserBlock;
+import gov.nist.csd.pm.usersblockmatrix.UsersBlockMatrix;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
