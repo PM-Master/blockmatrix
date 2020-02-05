@@ -7,6 +7,8 @@ public class UserBlock implements Serializable {
     private String username;
     private Collection<String> attributes;
 
+    public UserBlock() {}
+
     public UserBlock(String username, Collection<String> attributes) {
         this.username = username;
         this.attributes = attributes;
