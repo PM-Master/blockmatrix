@@ -1,6 +1,5 @@
 package gov.nist.csd.pm.blockmatrix;
 
-import gov.nist.csd.pm.exceptions.PMException;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -10,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UsersBlockMatrixTest {
 
     @Test
-    void testAddUser() throws PMException {
+    void testAddUser() throws BlockMatrixException {
         UsersBlockMatrix bm = new UsersBlockMatrix(1);
         bm.addUser("u1", "ua1", "ua2");
 
@@ -20,15 +19,15 @@ class UsersBlockMatrixTest {
     }
 
     @Test
-    void testRemoveUser() throws PMException {
+    void testRemoveUser() throws BlockMatrixException {
         UsersBlockMatrix bm = new UsersBlockMatrix(1);
         bm.addUser("u1", "ua1", "ua2");
         bm.removeUser("u1");
-        assertThrows(PMException.class, () -> {bm.getUser("u1");});
+        assertThrows(BlockMatrixException.class, () -> {bm.getUser("u1");});
     }
 
     @Test
-    void testGetUser() throws PMException {
+    void testGetUser() throws BlockMatrixException {
         UsersBlockMatrix bm = new UsersBlockMatrix(1);
         bm.addUser("u1", "ua1", "ua2");
 
@@ -38,7 +37,7 @@ class UsersBlockMatrixTest {
     }
 
     @Test
-    void testUpdateUser() throws PMException {
+    void testUpdateUser() throws BlockMatrixException {
         UsersBlockMatrix bm = new UsersBlockMatrix(1);
         bm.addUser("u1", "ua1", "ua2");
         bm.updateUser("u1", "ua1", "ua2", "ua3");
