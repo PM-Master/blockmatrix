@@ -48,13 +48,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>gov.nist.blockmatrixwithtimestamping</groupId>
-            <artifactId>BlockmatrixWithTimestamping</artifactId>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/BlockmatrixWithTimestamping-0.0.1-jar-with-dependencies.jar</systemPath>
-            <version>0.0.1</version>
-        </dependency>
-        <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
             <version>1.6.0</version>
