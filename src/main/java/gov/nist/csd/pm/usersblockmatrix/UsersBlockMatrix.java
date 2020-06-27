@@ -28,6 +28,15 @@ public class UsersBlockMatrix {
         }
     }
 
+    public List<UserBlock> getUsers() throws BlockMatrixException {
+        List<UserBlock> blocks = new ArrayList<>();
+        for (String user : usersMap.keySet()) {
+            blocks.add(getUser(user));
+        }
+
+        return blocks;
+    }
+
     public synchronized void removeUser(String user) {
         int index = usersMap.get(user);
         bm.erase(index);
