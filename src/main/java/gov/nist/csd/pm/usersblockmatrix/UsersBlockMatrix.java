@@ -24,7 +24,7 @@ public class UsersBlockMatrix {
             int index = bm.add(new UserBlock(user, Arrays.asList(attributes)).toByteArray());
             usersMap.put(user, index);
         } catch (IOException e) {
-            throw new BlockMatrixException("error adding user: " + e.getMessage());
+            throw new BlockMatrixException("error adding user " + user + ": " + e.getMessage());
         }
     }
 
@@ -57,8 +57,11 @@ public class UsersBlockMatrix {
         if (index < 0) {
             addUser(user, attributes);
         } else {
-            removeUser(user);
-            addUser(user, attributes);
+            try {
+                bm.set(index, new UserBlock(user, Arrays.asList(attributes)).toByteArray());
+            } catch (IOException e) {
+                throw new BlockMatrixException("error updating user " + user + ": " + e.getMessage());
+            }
         }
     }
 }

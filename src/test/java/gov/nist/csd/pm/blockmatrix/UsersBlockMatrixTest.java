@@ -49,4 +49,12 @@ class UsersBlockMatrixTest {
         assertEquals("u1", u1.getUsername());
         assertTrue(u1.getAttributes().containsAll(Arrays.asList("ua1", "ua2", "ua3")));
     }
+
+    @Test
+    void testCapacityOnUpdate() throws BlockMatrixException {
+        UsersBlockMatrix bm = new UsersBlockMatrix(1);
+        bm.addUser("u1", "ua1", "ua2");
+
+        assertDoesNotThrow(() -> bm.updateUser("u1", "ua1", "ua2"));
+    }
 }
