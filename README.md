@@ -1,6 +1,8 @@
 # blockmatrix
 An API to manage users and attributes using a blockmatrix.
 
+*Note: This is only a library that uses a block matrix data structure. It is not a distriubted deployment of a block matrix.*
+
 ## Maven
 First import the jitpack repository.
 ```xml
